@@ -1,0 +1,238 @@
+/* Basic responsive styles for Sarenade scaffold */
+:root{--max-width:1100px;--accent:#0066cc}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;color:#fff;background:linear-gradient(180deg,#191970,#ff4500,#ffd700);}
+.container{max-width:var(--max-width);margin:0 auto;padding:1rem}
+.site-header{background:transparent;border-bottom:1px solid rgba(255,255,255,0.06);color:#fff}
+.site-header .container{display:flex;align-items:center;justify-content:space-between}
+
+/* Ensure title and nav are visible over transparent header */
+.site-header .art-title{color:#fff}
+.site-header .nav a{color:inherit}
+.logo{margin:0;font-size:1.125rem;display:flex;align-items:center}
+.logo-img{width:80px;height:80px;display:block;border-radius:50%;object-fit:cover}
+.art-title{color:#fff}
+.nav a{margin-left:1rem;color:inherit;text-decoration:none}
+.nav a:hover{opacity:0.95}
+.hero{padding:4rem 0;background:transparent;position:relative}
+.hero h2{color:#fff}
+.hero p{color:rgba(255,255,255,0.95);font-size:1.05rem;line-height:1.6}
+.hero h2{margin:0 0 .5rem;font-size:2rem;font-family:'Great Vibes',cursive}
+
+/* Hero layout: content left, vertical oval image on the right */
+.hero-inner{position:relative}
+.hero-content{z-index:2}
+.hero-figure{position:absolute;right:0.5rem;top:50%;transform:translateY(-50%);z-index:1;pointer-events:none;margin-left:1.5rem}
+.hero-figure .hero-img{width:320px;height:380px;object-fit:cover;border-radius:50% / 40%;box-shadow:0 14px 40px rgba(0,0,0,0.45);border:6px solid rgba(255,255,255,0.06);display:block}
+.hero-img{width:100%;max-height:420px;object-fit:cover;margin-top:1rem;display:block}
+
+/* Section titles: match the decorative site title font */
+main > section h3,
+.service-title h4{
+	font-family: 'Great Vibes', cursive;
+	margin: 0 0 0.75rem;
+}
+/* Larger section title sizes */
+main > section h3{font-size:2rem;line-height:1.05}
+@media(min-width:800px){main > section h3{font-size:2.8rem}}
+
+/* Ensure text doesn't run under the figure on larger screens */
+@media(min-width:800px){
+	.hero-content{max-width:calc(100% - 360px)}
+}
+
+/* Hide the decorative figure on small screens */
+@media(max-width:799px){
+	.hero-figure{display:none}
+}
+.cta{display:inline-block;margin-top:.75rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:6px;text-decoration:none}
+.content{padding:2rem 0}
+
+/* Sections transparent so site background shows through */
+main > section{background:transparent}
+/* Ensure hero text remains readable over the site background */
+.hero h2{color:#fff}
+.hero p{color:rgba(255,255,255,0.95)}
+.site-footer{border-top:1px solid #eee;padding:.75rem 0;text-align:center;color:#666}
+@media(min-width:800px){.hero h2{font-size:2.5rem}}
+
+/* Artistic title */
+.art-title{
+	font-family:'Great Vibes',cursive;
+	font-size:2.4rem;
+	color:#222;
+	margin-left:12px;
+	vertical-align:middle;
+	text-shadow:0 2px 4px rgba(0,0,0,0.12);
+}
+@media(min-width:768px){
+	.art-title{font-size:3.6rem}
+}
+
+@media(min-width:800px){
+	.logo-img{width:110px;height:110px}
+}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+.service-card{border:1px solid #eee;padding:1rem;border-radius:10px;background:#fff}
+.service-card h4{margin:.25rem 0 .5rem}
+.cta.small{padding:.4rem .65rem;font-size:.9rem}
+.cta.small .btn-icon{width:20px;height:20px;object-fit:cover;border-radius:4px;margin-right:.5rem;vertical-align:middle}
+@media(min-width:800px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* Service card image-first layout: show image until hovered */
+.service-card{position:relative;overflow:hidden;min-height:180px;padding:0}
+.service-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .28s ease,transform .28s ease}
+.service-title{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;justify-content:center;align-items:center;padding:0 1rem;pointer-events:none}
+.service-title h4{margin:0;color:#000;font-size:1.9rem;text-shadow:0 6px 18px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.06)}
+
+.card-info{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.25rem;background:rgba(0,0,0,0.45);color:#fff;opacity:0;transform:translateY(8px);transition:opacity .28s ease,transform .28s ease}
+.card-info p{color:inherit;margin:.5rem 0}
+.card-info .cta{background:rgba(255,255,255,0.9);color:#111}
+.service-card:hover .card-info{opacity:1;transform:none}
+.service-card:hover .service-img{opacity:.28;transform:scale(1.02)}
+
+/* Lashes & Brows gradient title */
+.service-card.service-lashes .service-title h4{
+	color: #000000;
+	text-shadow: 0 6px 18px rgba(0,0,0,0.7), 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* Cuts & Styles title color */
+.service-card.service-cuts .service-title h4{
+	color: #000000;
+	text-shadow: 0 6px 18px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* Hair Extensions title color */
+.service-card.service-extensions .service-title h4{
+	color: #000000;
+	text-shadow: 0 6px 18px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.06);
+}
+
+@media(min-width:800px){
+	.service-title h4{font-size:2.2rem}
+}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem}
+.gallery-grid img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+@media(min-width:800px){.gallery-grid{grid-template-columns:repeat(4,1fr)}.gallery-grid img{height:140px}}
+
+/* Reviews */
+.reviews-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+.review-card{background:rgba(255,255,255,0.9);padding:1rem;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.review-card blockquote{margin:0 0 .5rem;font-style:italic;color:#333}
+.review-card .cite{margin:0;color:#666;font-size:.95rem}
+.reviews-cta{margin-top:1rem;text-align:center}
+@media(min-width:800px){.reviews-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* Team */
+/* Team (removed) */
+
+/* Contact */
+.contact-columns{display:block}
+.contact-form{display:flex;flex-direction:column;gap:.5rem}
+.contact-form label{display:flex;flex-direction:column;font-size:.95rem}
+.contact-form input,.contact-form textarea,.contact-form select{padding:.5rem;border:1px solid #ddd;border-radius:6px}
+.contact-details{margin-top:1rem;color:#444}
+@media(min-width:800px){.contact-columns{display:grid;grid-template-columns:1fr 320px;gap:2rem}.contact-details{margin-top:0}}
+
+/* Members (removed) */
+
+/* Modal Popup */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: #333;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+}
+
+.modal-content h3 {
+  color: #2c3e50;
+  margin-top: 1.5rem;
+}
+
+.modal-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.modal-content li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.modal-content p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+.modal-content .cta {
+  margin-top: 1.5rem;
+}
